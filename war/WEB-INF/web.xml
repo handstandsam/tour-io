@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+	<servlet>
+		<servlet-name>start-recording</servlet-name>
+		<servlet-class>com.handstandsam.googlemaps.StartRecordingServlet</servlet-class>
+	</servlet>
+
+	<!-- Actions -->
+	<servlet-mapping>
+		<servlet-name>start-recording</servlet-name>
+		<url-pattern>/start-recording/*</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>record-point</servlet-name>
+		<servlet-class>com.handstandsam.googlemaps.RecordPointServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>record-point</servlet-name>
+		<url-pattern>/record-point/*</url-pattern>
+	</servlet-mapping>
+
+	<!-- Controllers -->
+	<servlet>
+		<servlet-name>admin-controller</servlet-name>
+		<servlet-class>com.handstandsam.googlemaps.controller.AdminController</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>admin-controller</servlet-name>
+		<url-pattern>/admin/*</url-pattern>
+	</servlet-mapping>
+
+
+
+	<!-- Welcome File -->
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+	</welcome-file-list>
+
+
+
+	<!-- API -->
+	<servlet>
+		<servlet-name>get-tours-servlet</servlet-name>
+		<servlet-class>com.handstandsam.googlemaps.GetToursServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>get-tours-servlet</servlet-name>
+		<url-pattern>/get-tours/*</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>get-tour-servlet</servlet-name>
+		<servlet-class>com.handstandsam.googlemaps.GetTourServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>get-tour-servlet</servlet-name>
+		<url-pattern>/tour/*</url-pattern>
+	</servlet-mapping>
+
+	<!-- Security Constraints -->
+	<security-constraint>
+		<web-resource-collection>
+			<url-pattern>/admin/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>admin</role-name>
+		</auth-constraint>
+	</security-constraint>
+</web-app>

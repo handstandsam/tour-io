@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Google IO Tours - Created by Sam Edwards (@HandstandSam)</title>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="/assets/js/jquery-1.5.1.min.js"></script>
+<script type="text/javascript" src="/assets/js/map.js"></script>
+<link rel="stylesheet" href="/assets/css/style.css" type="text/css" /> 
+<script type="text/javascript">
+
+function showWarning(message){
+	var feedback = $("#feedback");
+	feedback.show()
+	var feedbackItem = $("<h2 style='display:none;padding:10px;font-weight:bold;'>"+message+"</h2>");
+	feedback.prepend(feedbackItem);
+	feedbackItem.fadeIn('slow');
+	setTimeout(function() {
+		feedbackItem.fadeOut('slow').remove();
+	}, 3000);
+}
+
+
+	$(document).ready(function() {	
+		//Add Click Listeners
+		startRecordingForm = $("#start-recording");
+		stopRecordingButton = $("#stop-recording");
+
+		startRecordingForm.submit(function() {
+			startWatching();
+			return false;
+		});
+		stopRecordingButton.click(function() {
+			stopWatching();
+			return false;
+		});
+		
+		$(".nav a").click(function(){
+			var href = $(this).attr('href');
+			linkClicked(href);
+			return false;
+		});
+	});
+</script>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<style>
+
+</style>
+</head>
+<body>
+<!--header>Walking Tours</header-->
+<ul class="nav">
+	<li>
+		<a href="#home" class="link-wrapper">
+			<div class="green-gradient">
+				<h4>Home</h4>
+			</div>
+		</a>
+	</li>
+	<li style="display:none;">
+		<a href="#tour" class="link-wrapper">
+			<div class="green-gradient">
+				<h4>Tour</h4>
+			</div>
+		</a>
+	</li>
+	<li>
+		<a href="#findtours" class="link-wrapper">
+			<div class="green-gradient">
+				<h4>Browse</h4>
+			</div>
+		</a>
+	</li>
+	<!--li>
+		<a href="#nearby" class="link-wrapper">
+			<div class="green-gradient">
+				<h4>Nearby</h4>
+			</div>
+		</a>
+	</li-->
+	<li>
+		<a href="#create" class="link-wrapper last create">
+			<div class="green-gradient">
+				<h4>Create</h4>
+			</div>
+		</a>
+	</li>
+</ul>
+<div>
+	<div id="feedback" class="align-center" style="display:none;">
+	</div>
+	<div class="align-center">
+		<div id="home">
+			<div class="content">
+				<h1>Welcome!</h1>
+				<br/>
+				<button onClick="javascript:linkClicked('#findtours');" class=" rounded-button start">Browse Tours</button>
+				<br/>
+				<span style="margin:0px 10px;">OR</span>
+				<br/>
+				<button onClick="javascript:linkClicked('#create');"  class="rounded-button start">Create A Tour</button>
+			</div>
+		</div>
+		<div id="findtours" style="display:none;">
+			<div class="content">
+				<h1>Browse Tours</h1>
+				<ul id="tour-list"></ul>
+			</div>
+		</div>
+		<div id="nearby" style="display:none;">
+			<div class="content">
+				<h1>Nearby Tours</h1>
+				<ul id="nearby-tour-list"></ul>
+			</div>
+		</div>
+		<div id="create" style="display:none;">	
+			<div id="create-map-canvas" class="map" style="width: 100%; height: 200px;display:none;"></div>
+			<div class="content">
+				
+				<div id="start" class="align-center">
+					<div style="margin:0px auto;">
+						<form id="start-recording">
+							<ul>
+								<li>
+									<span class="label">Tour Name: </span>
+									<br/>
+									<input type="text" name="tourname"></input>
+									<br/>
+								</li>
+								<li>
+									<span class="label">Category: </span>
+									<br/>
+									<select name="category">
+										<option value="">-- Choose A Category--</option>
+										<option value="BUSINESS">Business</option>
+										<option value="CULTURE">Culture</option>
+										<option value="FOOD">Food</option>
+										<option value="OUTDOORS">Outdoors</option>
+										<option value="SIGHTSEEING">Sightseeing</option>
+										<option value="OTHER">Other</option>
+									</select>
+									<br/>
+								</li>
+							</ul>
+							<input type="submit" class="rounded-button start" value="Start Recording"></input>
+						</form>
+					</div>
+				</div>
+				<div id="stop" style="display:none;">
+					<div style="overflow:hidden;">
+						<h3 class="title">Recording <span class="tourname"></span></h3>
+						<button id="stop-recording" class="rounded-button stop">
+							<h3>Stop</h3>
+						</button>
+					</div>
+					<br/>
+					<p>The tour is currently being recorded and where you travel will be shown on the map above.  To finish and save the tour recording, click the "Stop" button.</p>
+				</div>
+				<ol class="points" style="background: yellow;"></ol>
+			</div>
+		</div>
+		<div id="tour" style="display:none;">	
+		</div>
+	</div>
+</div>
+<footer class="green-gradient">
+	<h5>Created by <a href="http://twitter.com/handstandsam">Sam Edwards (@HandstandSam)</a></h5>
+</footer>
+</body>
+</html>

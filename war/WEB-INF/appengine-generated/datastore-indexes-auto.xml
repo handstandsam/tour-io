@@ -1,0 +1,11 @@
+<!-- Indices written at Thu, 24 Mar 2011 22:40:55 UTC -->
+
+<datastore-indexes>
+
+    <!-- Used 6 times in query history -->
+    <datastore-index kind="RecordedPoint" ancestor="false" source="auto">
+        <property name="recordingId" direction="asc"/>
+        <property name="point.time" direction="asc"/>
+    </datastore-index>
+
+</datastore-indexes>
