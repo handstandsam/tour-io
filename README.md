@@ -2,6 +2,16 @@
 
 This app was created in less than a day and allows you to record a "tour" via a mobile browser (Android and iPhone).  You name the tour and select a category.  Once you are finished with the tour, the tour is listed in the directory for others to view.
 
+## TECHNOLOGIES USED
+
+- Google Maps
+- jQuery
+- Google App Engine for Java
+- Objectify
+- Gson
+- JSON
+- SLF4J
+
 ## CONTEST INSTRUCTIONS
 
 Congratulations! You have qualified for Round II of the Google Maps/Geo challenge. Starting from now, you will have until 4:00 P.M. PDT on March 24 to complete the following coding challenge. 
